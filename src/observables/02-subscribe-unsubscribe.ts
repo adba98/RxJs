@@ -32,9 +32,15 @@ const subs1 = intervalo$.subscribe(observer);
 const subs2 = intervalo$.subscribe(observer);
 const subs3 = intervalo$.subscribe(observer);
 
+/* 
+    Diferent Options
+    subs1.add(subs2.add(subs3));
+*/
+
+subs1.add(subs2);
+subs1.add(subs3);
+
 setTimeout((): void => {
   subs1.unsubscribe();
-  subs2.unsubscribe();
-  subs3.unsubscribe();
   console.log("Timeout Completed");
 }, 3000);
